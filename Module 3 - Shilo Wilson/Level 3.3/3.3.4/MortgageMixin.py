@@ -28,7 +28,7 @@ class MortgageMixin(object):
         if isinstance(asset, HouseBase):
             super(MortgageMixin, self).__init__(asset, term, rate, face)
         else:
-            'Need a House for a Mortgage'
+            raise TypeError('Need a House for a Mortgage')
 
 
     def monthlyPayment(self, period):
@@ -49,10 +49,15 @@ class FixedRateMortgage(MortgageMixin, FixedLoan):
     def __init__(self,asset, term, rate, face):
         super(FixedRateMortgage, self).__init__(asset, term, rate, face)
 
+    def __str__(self):
+        return('Fixed Rate Mortgages for {} months, with payment of {}').format(self.term, self.monthlyPayment(0))
 
 class VariableRateMortgage(MortgageMixin, VariableLoan):
 
     def __init__(self,asset, term, rate, face):
         super(VariableRateMortgage, self).__init__(asset, term, rate, face)
+
+    def __str__(self):
+        return ('Variable Rate Mortgages for {} months, with payment of {}').format(self.term, self.monthlyPayment(0))
 
 

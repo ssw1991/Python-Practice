@@ -15,8 +15,7 @@ class Loan(object):
             self._face = face
             self._asset = asset
         else:
-            print('Not valid arguments')
-            pass
+            raise TypeError('Loan must contain an Asset')
 
     @property
     def term(self):
@@ -154,7 +153,7 @@ class FixedAutoLoan(FixedRateLoan):
         if isinstance(asset, Car):
             super(FixedAutoLoan, self).__init__(asset,term, rate, face)
         else:
-            print('Need a car for an AutoLoan')
+            raise TypeError('Need a car for an AutoLoan')
 
 
     def __str__(self):
@@ -167,7 +166,13 @@ class FixedAutoLoan(FixedRateLoan):
 class LoanPool(object):
 
     def __init__(self, loans):
+        if not all(isinstance(i, Loan) for i in loans):
+            raise TypeError('List of Loans must all be loans')
         self._loans = loans
+
+    def __iter__(self):
+        return iter(self._loans)
+
 
     @property
     def loans(self):

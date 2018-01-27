@@ -23,10 +23,10 @@ import random
 import string
 import numpy as np
 
-from assets.Car.Car import Civic as Civic
-from assets.Car.Car import Lexus as Lexus
-from assets.House.HouseBase import PrimaryHome as Primary
-from assets.House.HouseBase import VacationHome as Vacation
+from assets.Car import Civic as Civic
+from assets.Car import Lexus as Lexus
+from assets.HouseBase import PrimaryHome as Primary
+from assets.HouseBase import VacationHome as Vacation
 from loan import LoanPool as LoanPool
 from MortgageMixin import FixedRateMortgage
 from loan import FixedAutoLoan

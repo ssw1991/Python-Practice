@@ -169,6 +169,10 @@ class LoanPool(object):
     def __init__(self, loans):
         self._loans = loans
 
+    def __iter__(self):
+        return iter(self._loans)
+
+
     @property
     def loans(self):
         return self._loans

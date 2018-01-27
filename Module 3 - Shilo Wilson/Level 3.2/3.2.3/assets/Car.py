@@ -1,4 +1,4 @@
-from assets.asset import Asset as Asset
+from asset import Asset as Asset
 
 class Car(Asset):
 
