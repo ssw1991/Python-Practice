@@ -53,7 +53,7 @@ def add_loan():
                 user_asset = 0
             elif user_asset == 5:
                 asset = Car.Car(value)
-                user_asset = 01
+                user_asset = 0
 
         except Exception as e:
             logger.warn('Incorrect Input try again')
