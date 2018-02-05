@@ -12,6 +12,15 @@ import re
 import glob
 
 def searchforfile(ext, parent_dir, reg = None):
+    """
+    Searches for all files in the parent directory or sub directories
+    given the files extension = ext and the Regular expression returns a match on
+    the file name
+    :param ext:
+    :param parent_dir:
+    :param reg:
+    :return:
+    """
     files = os.walk(parent_dir)
     for i in files:
         if reg:

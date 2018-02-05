@@ -22,7 +22,7 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel('WARN')
 import Loan
-import utilities
+import Utilities.menu_driver as menu
 
 
 def main():
@@ -31,6 +31,10 @@ def main():
     cont = 1
     loanpool = []
     while cont:
+
+        """
+        Guide user through menu based on input
+        """
         print('Select an Option\n'
               '1) Add Loan\n'
               '2) Write Loans to file\n'
@@ -51,19 +55,19 @@ def main():
             continue
 
         if input == 1:
-            loan = utilities.add_loan()
+            loan = menu.add_loan()
             if loan:
                 loanpool.append(loan)
         elif input == 2:
             if len(loanpool) > 0:
                 fp = raw_input('Enter a filepath: ')
-                utilities.write_to_file(fp, loanpool)
+                menu.write_to_file(fp, loanpool)
             else:
                 logger.warn('No Loans to write')
         elif input == 3:
             raw_input('Enter File path')
             try:
-                loanpool = utilities.read_loan(fp)
+                loanpool = menu.read_loan(fp)
             except Exception as e:
                 logger.exception(e.message)
 
